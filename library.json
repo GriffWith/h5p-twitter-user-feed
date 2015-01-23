@@ -1,0 +1,16 @@
+{
+  "title": "Twitter User Feed",
+  "description": "Displays a Twitter User Feed",
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 0,
+  "runnable": 1,
+  "author": "Svein-Tore Griff With",
+  "license": "MIT",
+  "machineName": "H5P.TwitterUserFeed",
+  "preloadedJs": [
+    {
+      "path": "twitter-user-feed.js"
+    }
+  ]
+}
