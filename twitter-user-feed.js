@@ -27,7 +27,7 @@ H5P.TwitterUserFeed = (function ($) {
 
     // Set class on container to identify it as a greeting card
     // container.  Allows for styling later.
-    $container.addClass("h5p-twitter-feed");
+    $container.addClass("h5p-twitter-user-feed");
 
     // Add greeting text.
     $container.append(
@@ -52,10 +52,9 @@ H5P.TwitterUserFeed = (function ($) {
       t.ready = function(f) {
         t._e.push(f);
       };
-
       return t;
     }(document, "script", "twitter-wjs"));
-  }
+  };
 
   return C;
 })(H5P.jQuery);

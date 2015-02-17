@@ -12,5 +12,10 @@
     {
       "path": "twitter-user-feed.js"
     }
+  ],
+  "preloadedCss": [
+    {
+      "path": "twitter-user-feed.css"
+    }
   ]
 }
