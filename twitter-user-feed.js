@@ -22,23 +22,28 @@ H5P.TwitterUserFeed = (function ($) {
    * @param {jQuery} $container
    */
   C.prototype.attach = function ($container) {
-    
     this.setUpTwitter();
 
-    // Set class on container to identify it as a greeting card
-    // container.  Allows for styling later.
-    $container.addClass("h5p-twitter-feed");
+    // Set class on container to identify twitter user feed
+    $container.addClass("h5p-twitter-user-feed");
 
-    // Add greeting text.
     $container.append(
       '<a class="twitter-timeline" href="https://twitter.com/twitterapi"\\n\
       data-widget-id="558756407995273216" data-screen-name="' + this.options.userName
       + '" data-show-replies="' + this.options.showReplies 
       + '" data-tweet-limit="' + this.options.numTweets + '">Tweets by @'
       + this.options.userName + '</a>');
+
+    if (window.twttr !== undefined && window.twttr.widgets !== undefined) {
+      window.twttr.widgets.load($container.get(0));
+    }
   };
   
   C.prototype.setUpTwitter = function() {
+    if (H5P.TwitterUserFeed.twitterSetUp) {
+      return;
+    }
+    H5P.TwitterUserFeed.twitterSetUp = true;
     window.twttr = (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0],
         t = window.twttr || {};
@@ -52,10 +57,11 @@ H5P.TwitterUserFeed = (function ($) {
       t.ready = function(f) {
         t._e.push(f);
       };
-
       return t;
     }(document, "script", "twitter-wjs"));
-  }
+  };
 
   return C;
 })(H5P.jQuery);
+
+H5P.TwitterUserFeed.twitterSetUp = false;
